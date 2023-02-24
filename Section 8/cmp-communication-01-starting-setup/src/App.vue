@@ -14,6 +14,7 @@
         :email-address="friend.email"
         :is-favorite="friend.isFavorite"
         @toggle-favorite="toggleFavoriteStatus"
+        @delete="deleteContact"
       /><!-- </friend-contact> -->
     </ul>
   </section>
@@ -47,14 +48,17 @@ export default {
       identifiedFriend.isFavorite = !identifiedFriend.isFavorite
     },
     addContact(name, phone, email) {
-      const newFrienContact = {
+      const newFriendContact = {
         id: new Date().toISOString(),
         name: name,
         phone: phone,
         email: email,
         isFavorite: false
       };
-      this.friends.push(newFrienContact)
+      this.friends.push(newFriendContact)
+    },
+    deleteContact(friendId) {
+      this.friends = this.friends.filter(friend => friend.id !== friendId)
     }
   }
 };
