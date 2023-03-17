@@ -1,0 +1,16 @@
+A comunicação entre componentes no Vue exigem uma relação de parentesco (pai-filho).
+Sendo assim, o fluxo de comunicação é unidirecional.
+
+O parentesco é definido a partir da declaração de um determinado componente dentro de outro
+componente.
+
+O fluxo de dados no sentido pai -> filho é realizado a partir do uso de "props".
+O fluxo de dados no sentido filho -> pai é realizado a partir do uso de "Custom Events" por
+meio de "$emit".
+
+Se houver a necessidade de passagem de dados entre múltiplos componentes é possível utilizar
+"provide/inject". Definido "provide" em um componente, basta utilizar "inject" em qualquer componente
+filho, não importando o quão profundo seja o aninhamento do componente em relação ao pai.
+
+No entanto, recomenda-se utilizar a passagem de dados padrão pai -> filho por meio de "props",
+visto que com "provide/inject" pode ser fácil se perder em qual componente está sendo injetado o dado.
